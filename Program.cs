@@ -1,87 +1,48 @@
 ﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography.X509Certificates;
-
-namespace Age_Program
+using System.Threading;
 /*Programmer: Brendan Cohen
  * Date: 5/24/20
  * 
- * This program allows user to be able to 
- * see the average age of a group of students
+ * This program allows a user to enter a number of scores they choose and in turn 
+ * calculates the average as well as gives user score deviations
  * 
  */
+namespace Arrays
 {
     class Program
     {
-        public static void Main(string[] args)
+        static void Main(string[] args)
         {
-            printmessage();
-        }
-        static void printmessage()
-        {
-            Console.WriteLine("IS 3050");
-            Console.WriteLine("Class Age Report");
-            Console.WriteLine(" ");
-            Console.WriteLine("Name birth year question year");
-
-            studentReport();
-        }
-        public static void studentReport()    
-        {
+            int number; //declares number
+            int count = 0; //sets count = 0
+            double [] score = new double [100]; //allows up to 100 scores
+            double total = 0; //sets score = 0
+            double average; //allows up to 100 scores
 
 
-                String line;
-                String[] x;
+            Console.Write("How many scores are you going to enter: ");
+            number = int.Parse(Console.ReadLine());
 
-                using (StreamReader student = File.OpenText("Student.txt"))
-                {
-                    using (StreamWriter studentout = File.CreateText("studentreport.txt"))
-                    {
-                    int total = 0;
-                    int count = 0;
-
-                        while ((line = student.ReadLine()) != null)
-                        {
-                            x = line.Split(',');
-
-                            Console.Write(x[0] + ",");
-                            Console.WriteLine(x[1] + "," + x[2]);
-
-                            int age = int.Parse(x[2]) - int.Parse(x[1]);
-                            
-                            count++;
-                            total += age;
-                        }
-
-                    averageAge(count, total);
-                        
-                        student.Close();
-                        studentout.Close();
-                    }
-                }
-            static void averageAge(int count, int total)
+            while(count < number)
             {
-                double average = total / count;
+                Console.Write("enter a score: ");
+                score[count] = double.Parse(Console.ReadLine());
 
-                footer(average);
+                total = total + score[count];
+
+                count++;
             }
-            static void footer(double average)
+
+            average = total / number;
+
+            Console.WriteLine("Average score is " + average);
+
+            for(int i = 0; i < count; i++)
             {
-                Console.WriteLine("Average age " + average);
+                Console.Write("Score " + (i + 1));
+                Console.WriteLine(" deviates from the average by " + (average - score[i]));
             }
-            }
+
         }
-        
+    }
 }
-            
-        
-        
-        
-            
-        
-    
-
