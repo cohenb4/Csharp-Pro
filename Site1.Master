@@ -1,0 +1,48 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeBehind="Site1.master.vb" Inherits="WebApplication.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link href="../StyleSheet/StyleSheet1.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id ="PageWrapper">
+            <div id="Header">
+                <img src="../Images/uc.png" style="height: 180px; width: 331px" /></div>
+            <div id="MenuWrapper">
+            <div id="MainContent">
+            <asp:ContentPlaceHolder ID="MainContentPlaceholder" runat="server">
+            </asp:ContentPlaceHolder>
+            </div>
+            <div id="Menu">Menu
+                <div id="TreeView1">
+                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="Web" ImageSet="Arrows" Width="180px">
+                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                    <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
+                    <ParentNodeStyle Font-Bold="False" />
+                    <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+                </asp:TreeView>
+                    </div>
+                </div>
+                <asp:SiteMapDataSource ID="Web" runat="server" />
+            </div>
+            <div id="Footer">
+                <h3>University of Cincinnati | 2600 Clifton Ave. | Cincinnati, OH 45221 | ph: 513-556-6000</h3>
+                <a href="https://www.uc.edu/alert.html">Alerts</a>
+                <a href="https://www.uc.edu/about/publicsafety/clery/annual-security-report.html">| Clery and HEOA Notice</a>
+                <a href="https://www.uc.edu/about/non-discrimination">| Notice of Non-Discriminiation</a>
+                <a href="https://www.uc.edu/about/ucit/about/accessibility/eaccessibility-form.html">| eAccessibility Concern</a>
+                <a href="https://www.uc.edu/about/ucit/about/accessibility/eaccessibility-form.html">| Privacy Statements</a>
+                <a href="http://commercialization.uc.edu/copyright-infringement">| Copyright Information</a>
+                <h3>© 2019 University of Cincinnati</h3>
+                <br />
+            </div>
+        </div>
+    </form>
+</body>
+</html>
